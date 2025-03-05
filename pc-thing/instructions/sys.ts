@@ -16,7 +16,7 @@ export default {
                     case 0:
                         const pc = this;
                         //.split('').reverse().join('').match(/.{1,8}/g).map(b=>b.split('').reverse().join('')).map(b=>parseInt(b, 2))
-                        return new Promise<undefined>((resolve, reject) => {
+                        return new Promise<undefined>((resolve) => {
                             const data = new Uint8Array(1024)
                             let len = 0;
 
