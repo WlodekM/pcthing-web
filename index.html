@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>shitPC web runtime</title>
+    <link rel="stylesheet" href="./src/xterm.css">
+    <script type="module">
+        import { Terminal } from '@xterm/xterm';
+        import { run } from "./src/main.ts";
+
+        const term = globalThis.term = new Terminal({
+            convertEol: true
+        });
+
+        term.open(document.querySelector('.output'));
+
+        document.getElementById('run').addEventListener('click', async () => {
+            const iram = await document.getElementById('iram-input').files[0].bytes();
+            run(iram, false)
+        })
+    </script>
+</head>
+<body>
+    <label for="iram">Instruction ram:</label>
+    <br>
+    <input type="file" name="iram" id="iram-input" accept=".bin">
+    <br>
+    <button id="run">Run!</button>
+    <br>
+    <div>
+        <div class="output"></div>
+    </div>
+</body>
+</html>
