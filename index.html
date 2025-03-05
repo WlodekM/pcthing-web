@@ -17,7 +17,12 @@
 
         document.getElementById('run').addEventListener('click', async () => {
             const iram = await document.getElementById('iram-input').files[0].bytes();
-            run(iram, false)
+            term.clear();
+            await run(iram, false);
+            term.write('\nprogram execution ended\n');
+            term.write('ram NOT dumped because uuuuuh (i was too lazy to port hexdump to js)\n')
+            term.write('if you want the ram dump, use the deno runtime\n')
+            term.write('alright, bye\n')
         })
     </script>
 </head>
